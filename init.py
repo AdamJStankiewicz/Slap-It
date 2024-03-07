@@ -9,19 +9,22 @@ import os, os.path
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-app.config["UPLOAD_FOLDER"] = "C:/Users/fulla/OneDrive/Desktop/Slapper/static/posts"
+app.config["UPLOAD_FOLDER"] = os.getcwd()+f'/static/posts'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['GET'])
 def main():
-    if request.method == 'POST':
-        f = request.files['nudes']
-        #f.save(f.filename)
-        f.save(os.path.join(app.config["UPLOAD_FOLDER"], f.filename))
-        print("Recieved file")
-
     path=os.getcwd()+f'/client/build'
     return send_from_directory(directory=path,path='index.html')
+
+@app.route('/',methods=['POST'])
+def recievePost():
+    if request.method == 'POST':
+        f = request.files['nudes']
+        f.save(os.path.join(os.getcwd()+f'/static/posts',f.filename))
+        print("Recieved file")
+    
+    return "", 204
 
 @app.route('/static/<folder>/<file>')
 def css(folder,file):
