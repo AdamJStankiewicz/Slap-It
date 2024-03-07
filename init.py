@@ -3,23 +3,30 @@ from flask_socketio import SocketIO, emit
 from fileinput import filename
 import requests
 import json
+import os, os.path
+
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+app.config["UPLOAD_FOLDER"] = "C:/Users/fulla/OneDrive/Desktop/Slapper/static/posts"
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 @app.route('/', methods=['GET','POST'])
 def main():
-    uploadedFile = False
     if request.method == 'POST':
-        #if request.form['words']:
-           # print("Recieved data: ", request.form)
-           # return redirect(url_for('front'))
         f = request.files['nudes']
-        f.save(f.filename)
+        #f.save(f.filename)
+        f.save(os.path.join(app.config["UPLOAD_FOLDER"], f.filename))
         print("Recieved file")
-        uploadedFile = True
 
-    return render_template("index.html", fileUploaded = uploadedFile)
+    path=os.getcwd()+f'/client/build'
+    return send_from_directory(directory=path,path='index.html')
 
+@app.route('/static/<folder>/<file>')
+def css(folder,file):
+    path = folder+'/'+file
+    directory= os.getcwd()+f'/{'client/build/static'}'
+    return send_from_directory(directory=directory,path=path)
 
 socketio.run(app,host="0.0.0.0",port=1477, allow_unsafe_werkzeug=True, debug=True)

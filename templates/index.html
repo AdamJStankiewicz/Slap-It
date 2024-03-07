@@ -3,14 +3,33 @@
 <head>
 <link rel="stylesheet" href="static/style.css">
 </head>
-<body>
+    <body>
 
-<h1>File uploader</h1>
-<h2>File uploaded: {{fileUploaded}}</h2>
-<form method = "POST" action="/" enctype="multipart/form-data">
-    Send file: <input type="file" name="nudes" />
-    <input type="submit" value="Upload">
-</form>
+        <h1>File uploader</h1>
+        <form method = "POST" action="/" enctype="multipart/form-data">
+            Send file: <input type="file" name="nudes" />
+            <input type="submit" value="Upload">
+        </form>
+        <body class="Posts">
 
-</body>
+        </body>
+        {% if render_post %}
+        <script type="text/javascript">
+            function renderPost(postContent){
+                console.log(postContent);
+                const posts = document.querySelector('.Posts');
+                const postText = document.createElement("h1");
+                postText.textContent = postContent.name;
+                posts.append(postText);
+
+                const postImg = document.createElement("img");
+                postImg.src = "static/".concat(postContent.img);
+                postText.append(postImg);
+            }
+            var pc = JSON.parse('{{postContent | tojson}}'); 
+            renderPost(pc);
+        </script>
+        {% endif %}
+
+    </body>
 </html>
