@@ -14,6 +14,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app.postCount = 0
 app.postImgs = []
+app.postMsgs =[]
 
 @app.route('/', methods=['GET'])
 def main():
@@ -30,8 +31,11 @@ def recievePost():
 
         app.postImgs.append('static/'+f.filename)
         app.postCount += 1
+        app.postMsgs.append(request.files["msg"])
 
         print("Recieved file")
+        path=os.getcwd()+f'/client/build'
+        #return send_from_directory(directory=path,path='index.html')
     
     return "",204
 
@@ -44,7 +48,7 @@ def css(folder,file):
 @app.route('/postDatas',methods=['GET'])
 def postDatas():
 
-    postDict = {"postCount" : app.postCount, "postImgs" : app.postImgs}
+    postDict = {"postCount" : app.postCount, "postImgs" : app.postImgs,"postMsgs":app.postMsgs}
     return postDict
 
 socketio.run(app,host="0.0.0.0",port=1477, allow_unsafe_werkzeug=True, debug=True)

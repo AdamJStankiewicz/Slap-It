@@ -21,7 +21,8 @@ function Posts(){
         arr.push(
         <div>
             {console.log(data.postImgs[i])}
-            <img src={data.postImgs[i]}/>
+            <img className="postImg" src={data.postImgs[i]}/>
+            <p>data.postMsgs[i]</p>
         </div>
         )
     }
