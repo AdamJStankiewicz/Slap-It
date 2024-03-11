@@ -31,7 +31,7 @@ def recievePost():
 
         app.postImgs.append('static/'+f.filename)
         app.postCount += 1
-        app.postMsgs.append(request.files["msg"])
+        app.postMsgs.append(request.form["msg"])
 
         print("Recieved file")
         path=os.getcwd()+f'/client/build'

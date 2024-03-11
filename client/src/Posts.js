@@ -22,7 +22,7 @@ function Posts(){
         <div>
             {console.log(data.postImgs[i])}
             <img className="postImg" src={data.postImgs[i]}/>
-            <p>data.postMsgs[i]</p>
+            <p>{data.postMsgs[i]}</p>
         </div>
         )
     }
