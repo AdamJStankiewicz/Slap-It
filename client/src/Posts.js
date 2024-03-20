@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import Post from './Post'
 
 function Posts(){
 
@@ -19,8 +18,7 @@ function Posts(){
     let arr = []
     for (let i = 0; i < data.postCount; i++){
         arr.push(
-        <div>
-            {console.log(data.postImgs[i])}
+        <div className="post">
             <img className="postImg" src={data.postImgs[i]}/>
             <p>{data.postMsgs[i]}</p>
         </div>
