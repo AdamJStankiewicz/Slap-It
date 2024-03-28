@@ -26,8 +26,8 @@ code {
 }
 
 .container {
-  border: 5px solid #000000;
-  border-radius: 25px;
+  border: .4vh solid #000000;
+  border-radius: 3vh;
   background-color: #ffffff;
   position: absolute;
   height: 17%;
@@ -35,27 +35,27 @@ code {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Roboto', sans-serif;
-  
+  font-family: 'Roboto', sans-serif; 
 }
 
 textarea[name="msg"] {
   resize: none;
-  width: 98%;
-  margin-top: 10px;
-  margin-left: 2px;
+  width: 97%;
+  height: 10vh;
+  margin-top: 3%;
+  margin-left: 1.3%;
+  padding: 0%;
 }
-
 
 
 .container input[type="file"] {
   position: absolute;
-  bottom: 0;
+  bottom: 0%;
   left: 5%;
 }
 
 .container input[type="submit"] {
   position: absolute;
-  bottom: 0;
+  bottom: 0%;
   right: 5%;
 }
