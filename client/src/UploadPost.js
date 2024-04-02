@@ -2,11 +2,15 @@ import React, {useState, useEffect} from 'react'
 
 function UploadPost(){
     return (
-        <div>
+        <div className="container">
             <form method="POST" action="/" enctype="multipart/form-data">
-                <input type="file" name="nudes" required />
+                
                 <textarea name="msg" required rows="5" cols="33"></textarea>
-                <input type="submit" value="Upload" />
+
+                <div>
+                    <input type="file" name="nudes" required />
+                    <input type="submit" value="Upload" />
+                </div>
             </form>
         </div>
     )

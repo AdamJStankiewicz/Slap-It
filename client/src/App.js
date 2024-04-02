@@ -3,14 +3,19 @@ import UploadPost from './UploadPost'
 import Posts from './Posts'
 
 function App(){
-
+  let mainContent
+  switch (window.location.pathname) {
+    case "/":
+      mainContent = <UploadPost/>
+      break;
+    case "/main":
+      mainContent = <Posts/>
+      break;
+  }
   return(
-    <div>
-      <div className="container">
-      <UploadPost/>
-      </div>
-      <Posts/>
 
+    <div>
+      {mainContent}
     </div>
     
 

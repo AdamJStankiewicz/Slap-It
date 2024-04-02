@@ -21,9 +21,16 @@ def main():
     path=os.getcwd()+f'/client/build'
     return send_from_directory(directory=path,path='index.html')
 
-@app.route('/',methods=['POST'])
+
+@app.route('/main', methods=['GET'])
+def board():
+    path=os.getcwd()+f'/client/build'
+    return send_from_directory(directory=path,path='index.html')
+
+@app.route('/',methods=['GET','POST'])
 def recievePost():
     if request.method == 'POST':
+        print("Data recieved")
         f = request.files['nudes']
         f.save(os.path.join(os.getcwd()+f'/static/',f.filename))
 
@@ -33,8 +40,9 @@ def recievePost():
 
         print("Recieved file")
         path=os.getcwd()+f'/client/build'
+        
     
-    return "",204
+    return redirect("/main",code=302)
 
 @app.route('/static/<folder>/<file>')
 def css(folder,file):
