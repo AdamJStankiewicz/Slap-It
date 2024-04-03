@@ -18,15 +18,15 @@ function Posts(){
     let arr = []
     for (let i = 0; i < data.postCount; i++){
         arr.push(
-        <div className="post">
+        <div className="postContainer">
             <img className="postImg" src={data.postImgs[i]}/>
-            <p>{data.postMsgs[i]}</p>
+            <p className = "postMsgs">{data.postMsgs[i]}</p>
         </div>
         )
     }
 
     return (arr.map(posts=>posts))
-    
+
 }
 
 export default Posts;
