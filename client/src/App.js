@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import UploadPost from './UploadPost'
 import Posts from './Posts'
+import Test from './Test'
 
 function App(){
   let mainContent
@@ -10,6 +11,9 @@ function App(){
       break;
     case "/main":
       mainContent = <Posts/>
+      break;
+    case "/test":
+      mainContent = <Test/>
       break;
   }
   return(

@@ -18,9 +18,19 @@ function Posts(){
     let arr = []
     for (let i = 0; i < data.postCount; i++){
         arr.push(
-        <div className="postContainer">
-            <img className="postImg" src={data.postImgs[i]}/>
-            <p className = "postMsgs">{data.postMsgs[i]}</p>
+        <div>
+            <div className="postContainer">
+                <img className="postImg" src={data.postImgs[i]}/>
+                <p className = "postMsgs">{data.postMsgs[i]}</p>
+            </div>
+                <div className = "ud">
+                <form method="POST" action="/main" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value={i} />
+                    <input type="submit" name="vote" value="up"/>
+                    <input type="submit" name="vote" value="down"/>
+                </form>
+                <p>{data.postRatios[i]}</p>
+            </div>
         </div>
         )
     }
