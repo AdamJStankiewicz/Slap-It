@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import UploadPost from './UploadPost'
 import Posts from './Posts'
 import Test from './Test'
+import Login from './Login'
+import './Login.css'
 
 function App(){
   let mainContent

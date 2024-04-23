@@ -20,16 +20,20 @@ function Posts(){
         arr.push(
         <div>
             <div className="postContainer">
-                <img className="postImg" src={data.postImgs[i]}/>
-                <p className = "postMsgs">{data.postMsgs[i]}</p>
-            </div>
-                <div className = "ud">
+            <div className = "ud">
                 <form method="POST" action="/main" enctype="multipart/form-data">
                     <input type="hidden" name="id" value={i} />
-                    <input type="submit" name="vote" value="up"/>
-                    <input type="submit" name="vote" value="down"/>
+                    <button type="submit" name="vote" value="up">
+                        <img className = "upvote" src="static/upvote.svg"/>
+                    </button>
+                    <p>{data.postRatios[i]}</p>
+                    <button type="submit" name="vote" value="down">
+                        <img className = "downvote" src="static/downvote1.svg"/>
+                    </button>
                 </form>
-                <p>{data.postRatios[i]}</p>
+            </div>
+                <img className="postImg" src={data.postImgs[i]}/>
+                <p className = "postMsgs">{data.postMsgs[i]}</p>
             </div>
         </div>
         )

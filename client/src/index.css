@@ -13,6 +13,14 @@ code {
     monospace;
 }
 
+.create-post{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
 .postContainer {
   display: flex;
   padding: 20px;
@@ -40,28 +48,38 @@ code {
 }
 
 .ud {
-  display: flex;
-  padding: 20px;
-  background: #00b8c9;
-  margin: 20px;
-  border: .4vh solid #00b8c9;
-  border-radius: 3vh;  
-  height: 2rem;
-  width: 15rem;
-  filter: drop-shadow(-3 -3);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
 }
 
-.ud button {
-  position: relative;
-  border-radius: 1rem;
+.ud form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.ud form button {
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.ud form button img {
+  width: 30px;
+}
+
+.ud form button.downvote img {
+  padding-top: 10px;
+}
+
 
 .ud p {
-  position: relative;
-  bottom: 2.45rem;
   font-size: 2rem;
+  margin: 0;
 }
-
 
 .container {
   box-shadow: -1px 1px 5px #000000;
@@ -79,10 +97,9 @@ code {
 .container textarea[name="msg"] {
   width: 92%;
   position: relative;
-  resize: relative;
+  resize: none;
   border: none;
   outline: none;
-  resize: relative;
   margin-top: 10px;
   margin-left: 10px;
   background-color: #00b8c9;
@@ -102,3 +119,25 @@ code {
   bottom: 0;
   right: 5%;
 }
+
+.container .close-button{
+  position: relative;  
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 5px;
+  left: 87%;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+}
+
